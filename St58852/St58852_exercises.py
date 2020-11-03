@@ -173,7 +173,7 @@ else:
         print('NO')'''
 
 ##===================================================================##
-def oficer_steps():
+def officer_steps():
     col1, row1 = int(input()), int(input())
     col2, row2 = int(input()), int(input())
 
@@ -182,7 +182,7 @@ def oficer_steps():
     else:
         print('NO')
 
-#oficer_steps()
+#officer_steps()
 
 ##===================================================================##
 def horse_steps():
@@ -1986,14 +1986,7 @@ def cesar_algorithm_encoder():
 #cesar_algorithm_encoder()
 
 ##===================================================================##
-def dec_to_boh_converter():
-    n = int(input())
 
-    print(bin(n)[2:])
-    print(oct(n)[2:])
-    print(hex(n)[2:].upper())
-
-#dec_to_boh_converter()
 
 ##===================================================================##
 

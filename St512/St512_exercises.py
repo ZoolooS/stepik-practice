@@ -4,7 +4,17 @@ def uniq_obj_counter(objects=list):
 #uniq_obj_counter(objects)
 
 ##===================================================================##
+def closest_mod_5(x):
+    for i in range(5):
+        if (x + i) % 5 == 0:
+            print(x + i)
+            return x + i
+    return "I don't know :("
 
+#closest_mod_5(x)
+#closest_mod_5(11)
+#closest_mod_5(10)
+#closest_mod_5(114)
 
 ##===================================================================##
 

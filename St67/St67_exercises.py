@@ -381,57 +381,100 @@ def generate_matrix_from_matrix():
 #generate_matrix_from_matrix()
 
 ##===================================================================##
-n = int(input())
-n_list = [[0 for i in range(n)] for j in range(n)]
-n_set = [i for i in range(1, n + 1)]
-#print(n_list)
-#result_row = []
-#start = 1
-#i, j = 0, 0
-#circle = 0
-counter = 1
+def spiral_numbers_printer():
+    n = int(input())
+    n_list = [[0 for i in range(n)] for j in range(n)]
+    n_set = [i for i in range(1, n ** 2 + 1)]
+    counter = 0
 
-for circle in range((n + 1) // 2):  # 0 1 2 3
-    #shift = (n - 1) - 2 * circle    # 7 5 3 1
-    print('circle = ', circle)
-    
-    # top row
-    for col_f in range(circle, n - 1 - circle):
-        print(f'col_f = {col_f} | counter = {counter}')
-    #    n_list[circle][col_f] = n_set[counter]
-        counter += 1
-        if counter == n ** 2:
-            break
-    
-    # last col
-    for row_l in range(circle, n - 1 - circle):
-        print(f'row_l = {row_l} | counter = {counter}')
-    #    n_list[row_l][n - circle] = n_set[counter]
-        counter += 1
-        if counter == n ** 2:
-            break
-    
-    # last row
-    for col_l in range(n - 1 - circle, circle, - 1):
-        print(f'col_l = {col_l} | counter = {counter}')
-    #    n_list[n - circle][col_l] = n_set[counter]
-        counter += 1
-        if counter == n ** 2:
-            break
-    
-    # first col
-    for row_f in range(n - 1 - circle, circle, - 1):
-        print(f'row_f = {row_f} | counter = {counter}')
-    #    n_list[row_f][circle] = n_set[counter]
-        counter += 1
-        if counter == n ** 2:
-            break
-    
-    
-print('n_list = ', n_list)
+    for circle in range(n // 2):
+        #print('circle = ', circle)
+        
+        # top row
+        for row_f in range(circle, n - 1 - circle):
+            #print(f'row_f = {row_f} | counter = {counter}')
+            n_list[circle][row_f] = n_set[counter]
+            counter += 1
+            if counter == n ** 2:
+                break
+        
+        # last col
+        for col_l in range(circle, n - 1 - circle):
+            #print(f'col_l = {col_l} | counter = {counter}')
+            n_list[col_l][n - 1 - circle] = n_set[counter]
+            counter += 1
+            if counter == n ** 2:
+                break
+        
+        # last row
+        for row_l in range(n - 1 - circle, circle, - 1):
+            #print(f'row_l = {row_l} | counter = {counter}')
+            n_list[n - 1 - circle][row_l] = n_set[counter]
+            counter += 1
+            if counter == n ** 2:
+                break
+        
+        # first col
+        for col_f in range(n - 1 - circle, circle, - 1):
+            #print(f'col_f = {col_f} | counter = {counter}')
+            n_list[col_f][circle] = n_set[counter]
+            counter += 1
+            if counter == n ** 2:
+                break
+        
+    if n % 2 == 1:
+        n_list[n // 2][n // 2] = n_set[-1]
+
+    #print('n_list = ', n_list)
+    #print(*n_list, sep='\n')
+    for i in range(len(n_list)):
+        print(*n_list[i])
+
+#spiral_numbers_printer()
 
 ##===================================================================##
+def spiral_numbers_printer_alt():
+    n = int(input())
+    n_list = [[0 for i in range(n)] for j in range(n)]
+    counter = 1
 
+    for circle in range(n // 2):
+
+        # top row
+        for row_f in range(circle, n - 1 - circle):
+            n_list[circle][row_f] = counter
+            counter += 1
+            if counter == n ** 2:
+                break
+
+        # last col
+        for col_l in range(circle, n - 1 - circle):
+            n_list[col_l][n - 1 - circle] = counter
+            counter += 1
+            if counter == n ** 2:
+                break
+
+        # last row
+        for row_l in range(n - 1 - circle, circle, - 1):
+            n_list[n - 1 - circle][row_l] = counter
+            counter += 1
+            if counter == n ** 2:
+                break
+
+        # first col
+        for col_f in range(n - 1 - circle, circle, - 1):
+            n_list[col_f][circle] = counter
+            counter += 1
+            if counter == n ** 2:
+                break
+
+    if n % 2 == 1:
+        n_list[n // 2][n // 2] = n ** 2
+
+    for i in range(len(n_list)):
+        print(*n_list[i])
+
+#spiral_numbers_printer_alt()
 
 ##===================================================================##
 

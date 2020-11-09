@@ -387,39 +387,48 @@ n_set = [i for i in range(1, n + 1)]
 #print(n_list)
 #result_row = []
 #start = 1
-counter = 0
-i, j = 0, 0
-circle = 0
+#i, j = 0, 0
+#circle = 0
+counter = 1
 
-while counter < n ** 2:
+for circle in range((n + 1) // 2):  # 0 1 2 3
+    #shift = (n - 1) - 2 * circle    # 7 5 3 1
+    print('circle = ', circle)
     
-    # >
-    for j in range(circle, n - circle):
-        n_list[i][j] = n_set[counter]
+    # top row
+    for col_f in range(circle, n - 1 - circle):
+        print(f'col_f = {col_f} | counter = {counter}')
+    #    n_list[circle][col_f] = n_set[counter]
         counter += 1
+        if counter == n ** 2:
+            break
     
-    # \/
-    for i in range(n - (1 + circle)):
-        n_list[i + 1][j] = n_set[counter]
+    # last col
+    for row_l in range(circle, n - 1 - circle):
+        print(f'row_l = {row_l} | counter = {counter}')
+    #    n_list[row_l][n - circle] = n_set[counter]
         counter += 1
-    # <
-    for j in range(n - (1 + circle)):
-        pass
-
-    # /\
+        if counter == n ** 2:
+            break
     
-
-
-for circle in range(n):
-    top = [i for i in range(start, start + n + circle)]
-    n_list[circle] = top
-
-    for i in range(n - circle):
-        n_list[start + circle + i][-1] = start + i
+    # last row
+    for col_l in range(n - 1 - circle, circle, - 1):
+        print(f'col_l = {col_l} | counter = {counter}')
+    #    n_list[n - circle][col_l] = n_set[counter]
+        counter += 1
+        if counter == n ** 2:
+            break
     
-    start = (n + circle) * 2
+    # first col
+    for row_f in range(n - 1 - circle, circle, - 1):
+        print(f'row_f = {row_f} | counter = {counter}')
+    #    n_list[row_f][circle] = n_set[counter]
+        counter += 1
+        if counter == n ** 2:
+            break
     
-    bottom = []
+    
+print('n_list = ', n_list)
 
 ##===================================================================##
 

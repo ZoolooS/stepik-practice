@@ -7,7 +7,7 @@ def unpack_string():
     char = ''
 
     for i in range(len(s)):
-        if s[i] == s[-1]:
+        if i == len(s) - 1:
             repeats += s[i]
             s_out += char * int(repeats)
         elif s[i].isalpha() and repeats == '':
@@ -19,6 +19,7 @@ def unpack_string():
         elif s[i].isdigit():
             repeats += s[i]
 
+    s_out = s_out + '\n'
     with open('St67_unpack_string_output.txt', 'w') as ouf:
         ouf.write(s_out)
 

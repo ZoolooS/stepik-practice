@@ -10,27 +10,42 @@ https://stepic.org/media/attachments/course67/3.6.3/
 import requests, os, io
 
 # ====== defining functions ============================= #
+#def bubo_read_and_return_file(rel_path='.', strip='no', split=('no')):  # Вставить из библиотеки
+
+
+def return_first_url():
+    path = os.path.join('.', 'St67_recurrent_file_reading_input.txt')
+    #with io.open(path, 'r', encoding='utf-8') as inf:
+    with open(path, 'r') as inf:
+        return inf.readline().strip()  # first url
+
+
 def recurrence_by_url(url):
     base = 'https://stepic.org/media/attachments/course67/3.6.3/'
-    r = requests.get(url)
-    if r.text.strip().split()[0] == 'We':
-        return r.text.strip()
-    else:
-        recurrence_by_url(base + r.text.strip())
+    r = requests.get(url).text.strip()
+
+    if r.split()[0] != 'We':
+        with open('St67_recurrent_file_reading_link_list.txt', 'a') as ouf:
+            ouf.write(base + r + '\n')
+        recurrence_by_url(base + r)
+    
+    if r.split()[0] == 'We':
+        print('We? ==>', r.split()[0])
+        print('r.text ============\n' + r + '\n===================')
+        print('r.text =', type(r))
+
+    return r  # s_out
 
 
-def recurrent_file_reading():
-    path = os.path.join('.', 'St67_recurrent_file_reading_input.txt')
-    with io.open(path, 'r', encoding='utf-8') as inf:
-        url = inf.readline().strip()
-
-    s_out = str(recurrence_by_url(url))
+def print_to_file(s_out):
+    print('s_out =', type(s_out))
+    print('s_out ============\n' + s_out + '\n===================')
 
     with open('St67_recurrent_file_reading_output.txt', 'w') as ouf:
         ouf.write(s_out)
 
 
 # ====== main code ====================================== #
-recurrent_file_reading()
+print_to_file(recurrence_by_url(return_first_url()))
 
 # ====== end of code ==================================== #

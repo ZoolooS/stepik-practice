@@ -556,33 +556,12 @@ def result_printer_without_repears():
             print(n_dict[x])
 
 ##===================================================================##
-#def unpack_string():
-with open('text.txt', 'r') as inf:
-    s = inf.readline().strip()
-#s = 'a3b4c2e10b1'
-repeats = ''
-s_out = ''
-char = ''
+def return_run_args():
+    from sys import argv
 
-for i in range(len(s)):
-    if s[i] == s[-1]:
-        repeats += s[i]
-        s_out += char * int(repeats)
-    elif s[i].isalpha() and repeats == '':
-        char = s[i]
-    elif s[i].isalpha() and repeats != '':
-        s_out += char * int(repeats)
-        repeats = ''
-        char = s[i]
-    elif s[i].isdigit():
-        repeats += s[i]
+    print(*argv[1:])
 
-with open('text.txt', 'w') as ouf:
-    ouf.write(s_out)
-#print('s_out_total = ', s_out)
-
-##===================================================================##
-
+#return_run_args()
 
 ##===================================================================##
 

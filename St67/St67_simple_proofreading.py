@@ -13,9 +13,17 @@
 
 
 # ====== function declaration =========================== #
+def print_missing_words():
+    pr_dict_len = int(input())
+    pr_dict = [input().lower() for _ in range(pr_dict_len)]
+    pr_text_len = int(input())
+    pr_text = []
+    [pr_text.extend(input().lower().split()) for _ in range(pr_text_len)]
+    pr_text = set(pr_text)
 
+    [print(el) for el in pr_text if el not in pr_dict]
 
 # ====== main code ====================================== #
-
+print_missing_words()
 
 # ====== end of code ==================================== #

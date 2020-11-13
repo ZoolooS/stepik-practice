@@ -24,29 +24,31 @@
 
 
 # ====== function declaration =========================== #
+def get_coords():
+    #comm_dict = [{k: int(v)} for k, v in [input().split() for _ in range(int(input()))]]
+    paths = {'север': 0, 'юг': 0, 'восток': 0, 'запад': 0}
+    {paths.update({el[0]: int(paths[el[0]]) + int(el[1])}) for el in [tuple(input().split()) for _ in range(int(input()))]}
+    print(paths['восток'] - paths['запад'], paths['север'] - paths['юг'])
 
+
+def get_coords_alt():
+    comm_list = [input().split() for _ in range(int(input()))]
+
+    x, y = 0, 0
+    for el in comm_list:
+        if el[0] == 'восток':
+            x += int(el[1])
+        if el[0] == 'запад':
+            x -= int(el[1])
+        if el[0] == 'север':
+            y += int(el[1])
+        if el[0] == 'юг':
+            y -= int(el[1])
+    print(x, y)
 
 # ====== main code ====================================== #
-commands_len = int(input())
-
-comm_dict = [{k: int(v)} for k, v in [input().split() for _ in range(commands_len)]]
-print(comm_dict)
-
-comm_set = []
-[comm_set.extend(el.keys()) for el in comm_dict]
-comm_set = set(comm_set)
-print(comm_set)
-dir_paths = {}
-#[[ for i in comm_dict if com] for direction in comm_set]
-for direction in comm_set:
-    dir_len = 0
-    for command in comm_dict:
-        dir_len += command[direction]
-    dir_paths[direction] = dir_len
-
-print(dir_paths)
-#print(type(dict(input().split())))
-
+get_coords()
+#get_coords_alt()
 
 
 # ====== end of code ==================================== #

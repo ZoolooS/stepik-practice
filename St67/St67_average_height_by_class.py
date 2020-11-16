@@ -24,13 +24,20 @@ import os, io
 # ====== main code ====================================== #
 path = os.path.join('.', 'St67_average_height_by_class_input.txt')
 with io.open(path, 'r', encoding='utf-8') as inf:
-    #grade_list = []
     height_list = [line.strip().split('\t') for line in inf]
 
-print(height_list)
+h_count = [[str(i), 0] for i in range(1, 12)]
+av_h_dict = [[str(i), 0] for i in range(1, 12)]
 
-av_h_dict = {v: None for v in range(1, 12)}
-print(av_h_dict)
-[{av_h_dict[el[0]]: av_h_dict[el[0]] + int(el[3])} for el in height_list]
-print(av_h_dict)
+[[h_count[i - 1].insert(1, h_count[i - 1].pop(1) + 1) for i in range(1, 12) if el[0] == str(i)] for el in height_list]
+[[av_h_dict[i - 1].insert(1, av_h_dict[i - 1].pop(1) + int(el[2])) for i in range(1, 12) if el[0] == str(i)] for el in height_list]
+
+out_list = [[str(i), 0] for i in range(1, 12)]
+[[out_list[i].insert(1, (out_list[i].pop(1) + av_h_dict[i][1]) / h_count[i][1])] if h_count[i][1] != 0 else [out_list[i].insert(1, '-')] for i in range(11)]
+
+s_out = '\n'.join([f'{el[0]} {el[1]}' for el in out_list])
+print(f's_out =\n{s_out}')
+
+with open('St67_average_height_by_class_output.txt', 'w') as ouf:
+    ouf.write(s_out)
 # ====== end of code ==================================== #

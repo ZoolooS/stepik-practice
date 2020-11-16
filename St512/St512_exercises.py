@@ -27,7 +27,14 @@ def fib(x):
 #fib()
 
 ##===================================================================##
+def numbers_of_combinations():
+    from math import factorial
+    n, k = map(int, input().split())
 
+    noc = factorial(n) // (factorial(k) * factorial(n - k))
+    print(noc)
+
+numbers_of_combinations()
 
 ##===================================================================##
 

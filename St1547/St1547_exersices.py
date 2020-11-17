@@ -1,5 +1,37 @@
+def verify_brackets():
+    '''
+    Программа проверяет соглассованность скобок.
+    Если есть несогласование, то выводит позицию первой ошибки или первой скобки которая не имеет закрывающей пары.
+    Если скобки соглассованы, то выводит 'Success'
+    '''
+    s = input()
 
+    br = [['(', ')', 0], ['[', ']', 0], ['{', '}', 0]]
+    flag = []
+    stop = False
+    for i in range(len(s)):
+        for el in br:
+            if s[i] == el[0]:
+                el[2] += 1
+                flag.append(i + 1)
+        
+        for el in br:
+            if s[i] == el[1]:
+                el[2] -= 1
+                flag = 0
+                if el[2] < 0:
+                    print(i + 1)
+                    stop = True
+                    break
+        if stop == True:
+            break
 
+    if br[0][2] == br[1][2] == br[2][2] == 0:
+        print('Success')
+    elif flag != 0:
+        print(flag)
+       
+verify_brackets()
 
 ##===================================================================##
 

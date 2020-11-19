@@ -1,4 +1,8 @@
+def part_with_a():
+    marks = input().split()
+    print(f'{(marks.count("A") / len(marks)):.2f}')
 
+part_with_a()
 
 # #=================================================================# #
 

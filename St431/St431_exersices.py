@@ -2,10 +2,29 @@ def part_with_a():
     marks = input().split()
     print(f'{(marks.count("A") / len(marks)):.2f}')
 
-part_with_a()
+#part_with_a()
 
 # #=================================================================# #
+def decimal_to_roman():
+    dec = input()[::-1]
+    roman = []
 
+    d2r = {'1': ['I', 'X', 'C', 'M'],
+           '2': ['II', 'XX', 'CC', 'MM'],
+           '3': ['III', 'XXX', 'CCC', 'MMM'],
+           '4': ['IV', 'XL', 'CD'],
+           '5': ['V', 'L', 'D'],
+           '6': ['VI', 'LX', 'DC'],
+           '7': ['VII', 'LXX', 'DCC'],
+           '8': ['VIII', 'LXXX', 'DCCC'],
+           '9': ['IX', 'XC', 'CM'],
+           '0': ['', '', '']}
+
+    [roman.append(d2r[dec[i]][i]) for i in range(len(dec))]
+    print(''.join(roman[::-1]))
+
+
+#decimal_to_roman()
 
 # #=================================================================# #
 

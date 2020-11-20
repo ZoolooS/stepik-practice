@@ -37,7 +37,15 @@ def length_converter():
 #length_converter()
 
 # #=================================================================# #
+def some_calculations_001(x: float):
+    if x <= -2:
+        return 1 - (x + 2) ** 2
+    elif -2 < x <= 2:
+        return -(x / 2)
+    elif 2 < x:
+        return (x - 2) ** 2 + 1
 
+some_calculations_001(x)
 
 # #=================================================================# #
 

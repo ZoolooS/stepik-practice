@@ -45,7 +45,7 @@ def some_calculations_001(x: float):
     elif 2 < x:
         return (x - 2) ** 2 + 1
 
-some_calculations_001(x)
+#some_calculations_001(x)
 
 # #=================================================================# #
 

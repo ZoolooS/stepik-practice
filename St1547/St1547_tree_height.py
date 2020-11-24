@@ -44,10 +44,12 @@ def chopper(tree):  # def chopper(tree, chop=1):
 
 
 def cut_branch(tree):
-    cuted_tree = tree
+    cuted_tree = tree[:]
     cuts = []
     for i in range(n):
-        if str(i) not in parents:
+        if cuted_tree[i] == '':
+            continue
+        elif i not in tree:
 #            cuted_tree.pop(i)
             cuted_tree[i] = ''
 #            print('cuted_tree_clear = ', cuted_tree)
@@ -55,25 +57,47 @@ def cut_branch(tree):
 #            cuted_tree.append(parents[i])
 #            print('cuted_tree_pass = ', cuted_tree)
 #            cuted_tree.pop(i)
-            cuted_tree[i] = parents[i]
-    print('cuted_tree = ', cuted_tree)
-    print('cuts = ', cuts)
+            cuted_tree[i] = tree[i]
+            cuts.append(tree[i])
+#    print('cuted_tree = ', cuted_tree)
+#    print('cuts = ', cuts)
 
     return cuted_tree, cuts
 
 
 # ====== main code ====================================== #
+
 n = int(input())
-cuts = tree = parents = input().split()
-print('parents = ', parents)
+cuts = tree = parents = [int(i) for i in input().split()]
+'''
+#print('parents = ', parents)
 count = 0
-for i in range(n):
+while len(cuts) > 0:
     count += 1
     tree, cuts = cut_branch(tree)
-    print('tree = ', tree)
-    print('cuts_out = ', cuts)
+#    print('tree = ', tree)
+#    print('cuts_out = ', cuts)
 
 print(count)
+'''
+# =====
+def p_i(idx):
+    return parents[idx]
+
+lenghts = []
+for i in range(n):
+    if i not in parents:
+        continue
+    idx = i
+    count = 0
+    while idx != -1:
+        count += 1
+        idx = p_i(idx)
+    lenghts.append(count)
+
+print(lenghts)
+print(max(lenghts) + 1)
+# =====
 
 '''
 tree = {str(i): [] for i in range(-1, n)}

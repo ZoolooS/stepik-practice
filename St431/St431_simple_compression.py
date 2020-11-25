@@ -1,3 +1,10 @@
+'''
+
+'''
+# ====== imports block ================================== #
+
+
+# ====== function declaration =========================== #
 def s_c_cutter_alt(s):
     char = s[0]
     for el in s:
@@ -37,9 +44,7 @@ def simple_compression():
 
     print(result)
 
-# simple_compression()
 
-# #=================================================================# #
 def simple_compression_alt():
     s = input()
     result = ''
@@ -67,4 +72,8 @@ def simple_compression_alt():
 
     print(result)
 
+# ====== main code ====================================== #
+# simple_compression()
 simple_compression_alt()
+
+# ====== end of code ==================================== #

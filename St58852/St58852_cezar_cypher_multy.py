@@ -70,7 +70,8 @@ def cezar(mode, lang, shift):
         if lang == 'en':
             alfabet = ''.join([chr(i) for i in range(97, 123)])  # 'abcdefghijklmnopqrstuvwxyz' # Номера Юникода для латиницы: A-Z - 65-90, a-z - 97-122
         elif lang == 'ru':
-            alfabet = ''.join([chr(i) for i in range(1072, 1104)])  # Номера Юникода для русских букв: А-Я - 1040-1071 + Ё-1025, а-я - 1072-1103 + ё-1105
+#            alfabet = ''.join([chr(i) for i in range(1072, 1104)])  # Номера Юникода для русских букв: А-Я - 1040-1071 + Ё-1025, а-я - 1072-1103 + ё-1105
+            alfabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
         decoded = ''
         
         for c in encoded:
@@ -94,7 +95,9 @@ def cezar(mode, lang, shift):
     #if mode == 'encode':
     #    result = cezar_encode(input('Введите строку для шифрования:\n>> '), lang, shift)
     #elif mode == 'decode':
-    result = cezar_decode('Hawnj pk swhg xabkna ukq nqj.', lang, shift)
+#    result = cezar_decode('Hawnj pk swhg xabkna ukq nqj.', lang, shift)
+    result = cezar_decode('Ъгфхя члргоярсёс ылчуг: 0. Лрчг жов обдлхзозм тгфшгосн: е ахсм кгёгжнз ефз тгугпзхую егйрю. Дцжяхз ерлпгхзоярю!', lang, shift)
+    
     #else:
     #    print('Что-то пошло не так..')
 
@@ -104,5 +107,5 @@ def cezar(mode, lang, shift):
 
 print('====================')
 for i in range(1, 26):
-    cezar('E', 'en', i)
+    cezar('E', 'ru', i)
 print('====================')

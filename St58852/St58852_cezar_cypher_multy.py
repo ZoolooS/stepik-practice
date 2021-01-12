@@ -13,7 +13,6 @@ def cezar(mode, lang, shift):
     '''
     # ====== imports block ================================== #
 
-
     # ====== defining functions ============================= #
     def validate_mode(s):
         if s.upper() == 'E' or s.upper() == 'З':
@@ -24,7 +23,6 @@ def cezar(mode, lang, shift):
             print('Вы ввели некорректное значение. Попробуйте снова.')
             validate_mode(input('(E / D) >> '))
 
-
     def validate_lang(s):
         if s.upper() == 'E' or s.upper() == 'А':
             return 'en'
@@ -34,14 +32,12 @@ def cezar(mode, lang, shift):
             print('Вы ввели некорректное значение. Попробуйте снова.')
             validate_mode(input('(E / R) >> '))
 
-
     def validate_int(s):
         if s.isdigit():
             return int(s)
         else:
             print('Вы ввели некорректное значение. Попробуйте снова.')
             validate_int(input('(Целое число) >> '))
-
 
     def cezar_encode(decoded, lang, shift):
 
@@ -61,19 +57,18 @@ def cezar(mode, lang, shift):
                     encoded += alfabet[(alfabet.find(c) + shift) % len(alfabet)]
             else:
                 encoded += c
-        
+
         return encoded
 
-
     def cezar_decode(encoded, lang, shift):
-        
+
         if lang == 'en':
             alfabet = ''.join([chr(i) for i in range(97, 123)])  # 'abcdefghijklmnopqrstuvwxyz' # Номера Юникода для латиницы: A-Z - 65-90, a-z - 97-122
         elif lang == 'ru':
-#            alfabet = ''.join([chr(i) for i in range(1072, 1104)])  # Номера Юникода для русских букв: А-Я - 1040-1071 + Ё-1025, а-я - 1072-1103 + ё-1105
+            # alfabet = ''.join([chr(i) for i in range(1072, 1104)])  # Номера Юникода для русских букв: А-Я - 1040-1071 + Ё-1025, а-я - 1072-1103 + ё-1105
             alfabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
         decoded = ''
-        
+
         for c in encoded:
             if c.lower() in alfabet:
                 if c.isupper():
@@ -86,20 +81,20 @@ def cezar(mode, lang, shift):
         return decoded
 
     # ====== main code ====================================== #
-    #print('>>> Шифратор/дешифратор для шифра Цезаря <<<\n---')
+#    print('>>> Шифратор/дешифратор для шифра Цезаря <<<\n---')
 
-    #mode = validate_mode(input('Будем зашифровывать (E / З) или расшифровывать (D / Р)? >> '))
-    #lang = validate_lang(input('На каком языке текст? ([E]nglish / [А]нглийский или [R]ussian / [Р]усский])? >> '))
-    #shift = validate_int(input('С каким сдвигом будем шифровать/дешифровать? >> '))
+#    mode = validate_mode(input('Будем зашифровывать (E / З) или расшифровывать (D / Р)? >> '))
+#    lang = validate_lang(input('На каком языке текст? ([E]nglish / [А]нглийский или [R]ussian / [Р]усский])? >> '))
+#    shift = validate_int(input('С каким сдвигом будем шифровать/дешифровать? >> '))
 
-    #if mode == 'encode':
-    #    result = cezar_encode(input('Введите строку для шифрования:\n>> '), lang, shift)
-    #elif mode == 'decode':
+#    if mode == 'encode':
+#        result = cezar_encode(input('Введите строку для шифрования:\n>> '), lang, shift)
+#    elif mode == 'decode':
 #    result = cezar_decode('Hawnj pk swhg xabkna ukq nqj.', lang, shift)
-    result = cezar_decode('Ъгфхя члргоярсёс ылчуг: 0. Лрчг жов обдлхзозм тгфшгосн: е ахсм кгёгжнз ефз тгугпзхую егйрю. Дцжяхз ерлпгхзоярю!', lang, shift)
-    
-    #else:
-    #    print('Что-то пошло не так..')
+    result = cezar_decode("g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr'q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj.", lang, shift)
+
+#    else:
+#        print('Что-то пошло не так..')
 
     print(result)
 
@@ -107,5 +102,5 @@ def cezar(mode, lang, shift):
 
 print('====================')
 for i in range(1, 26):
-    cezar('E', 'ru', i)
+    cezar('D', 'en', i)
 print('====================')

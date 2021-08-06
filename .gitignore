@@ -1,0 +1,30 @@
+__pycache__
+.vscode
+.vscode/
+vscode
+.git
+.zip
+_source
+_source/
+_output
+_output/
+*.tmp
+*.tmp/
+*.log
+*debug*
+
+# Environments
+.env
+.venv
+*env/
+*venv/
+*ENV/
+env.bak/
+venv.bak/
+environments/
+envs/
+
+# Django stuff:
+# local_settings.py
+# db.sqlite3
+# db.sqlite3-journal
